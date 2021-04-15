@@ -10,7 +10,7 @@ jobs:
           POSTGRES_PASSWORD: secret
     environment:
       APP_ENV: testing
-      DB_CONNECTION: pqsql
+      DB_CONNECTION: pgsql
       DB_HOST: localhost
       DB_PORT: 5432
       DB_DATABASE: larasns
@@ -27,15 +27,15 @@ jobs:
           paths:
             - vendor
       - restore_cache:
-          key: npm-v3-{{ checksum "package-lock.json" }}
+          key: npm-v1-{{ checksum "package-lock.json" }}
       - run:
           name: npm ci
           command: |
             if [ ! -d node_modules ]; then
               npm ci
-            fi 
+            fi
       - save_cache:
-          key: npm-v3-{{ checksum "package-lock.json" }}
+          key: npm-v1-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
       - run: npm run dev
