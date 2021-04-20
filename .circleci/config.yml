@@ -49,7 +49,6 @@ jobs:
       - run:
           name: php test
           command: vendor/bin/phpunit
-
   deploy:
     docker:
       - image: circleci/php:7.3-node-browsers
@@ -83,7 +82,7 @@ jobs:
           command: zip -ryq laravel-ci.zip .
       - aws-cli/install
       - run:
-          name: upload artifacts to s3
+          name: uplaod artifacts to s3
           command: aws s3 cp laravel-ci.zip s3://${AWS_S3_BUCKET_NAME}
       - run:
           name: deploy to prod
@@ -92,12 +91,14 @@ jobs:
             --application-name laravel-ci \
             --deployment-group-name laravel-ci \
             --s3-location bucket=${AWS_S3_BUCKET_NAME},key=laravel-ci.zip,bundleType=zip
-orbs:
+
+
+ords:
   aws-cli: circleci/aws-cli@1.0.0
 
 workflows:
   version: 2
-  build_deploy:
+  bulid_deploy:
     jobs:
       - build
       - deploy:
@@ -107,3 +108,4 @@ workflows:
             branches:
               only:
                 - master
+
