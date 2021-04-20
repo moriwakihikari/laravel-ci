@@ -94,7 +94,7 @@ jobs:
 
 
 ords:
-  aws-cli: circleci/aws-cli@1.0.0
+  aws-cli: circleci/aws-ci@1.0.0
 
 workflows:
   version: 2
