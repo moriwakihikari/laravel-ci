@@ -4,4 +4,4 @@ set -eux
 
 cd ~/laravel-ci
 php artisan migrate --force
-php artsian config:cache
+php artisan config:cache
