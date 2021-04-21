@@ -118,11 +118,10 @@ workflows:
             branches:
               only:
                 - master
-
       - deploy_tmp:
           requires:
             - build
           filters:
-            browsers:
+            branches:
               only:
                 - master
